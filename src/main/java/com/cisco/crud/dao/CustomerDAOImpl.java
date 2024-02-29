@@ -9,10 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.cisco.crud.model.Customer;
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO {
-	
-	List<Customer> customers=new ArrayList<Customer>();
+public class CustomerDAOImpl implements CustomerDAO{
 
+	List<Customer> customers= new ArrayList<Customer>();
 	@Override
 	public Customer createCustomer(Customer cust) {
 		customers.add(cust);
@@ -21,26 +20,23 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		
 		return customers;
 	}
 
 	@Override
 	public void removeCustomer(int id) {
-		Iterator<Customer> itr=customers.iterator();
+		Iterator<Customer> itr= customers.iterator();
 		Customer found=null;
 		while(itr.hasNext()) {
-			Customer c=itr.next();
+			Customer c= itr.next();
 			if(c.getId()==id) {
 				found=c;
 				break;
 			}
-			
 		}
-		if(found!=null) {
-			customers.remove(found);
-		}
-		
+		if(found!=null)
+			customers.remove(found);//remove customer object
 	}
 
+	
 }
